@@ -1,49 +1,67 @@
 #include <stdio.h>
 
+const int NUMBER = 9;
+const char* GRADES[NUMBER] = {"A+","A","B+","B","C+","C","D+","D","F"};  
+const int SCORES[NUMBER] = {95,90,85,80,75,70,65,60,0};
+
+void calculateScore(float stu_score, const char* GRADES[], const int length);
+
 int main(void)
 {
     int i;
-    float score;
+    float stu_score;
 
-    char* table[9] = {"A+","A","B+","B","C+","C","D+","D","F"};
-    char table2[9] = {95,90,85,80,75,70,65,60,0};
+		printf("학점 프로그램\n종료를 원하면 \"-1\" 을 입력\n\n");
 
-    // 배열 출력
-    for(i=0; i<9; i++){
-        printf("%s\t", table[i]);
+    // 성적 테이블 출력
+		printf("[학점 테이블]\n");
+    printf("학점 : ");
+    for(i=0; i<NUMBER; i++){
+        printf("%s\t", GRADES[i]);
     }
-
     putchar('\n');
 
-    for(i=0; i<9; i++){
-        printf("%d\t", table2[i]);
+		printf("점수 : ");
+    for(i=0; i<NUMBER; i++){
+        printf("%d\t", SCORES[i]);
     }
-
     putchar('\n');
 
-    // 성적 입력
-    printf("성적을 입력하세요 (0~100) : ");
-    scanf("%f", &score);
 
-    // 유효성 체크
-    if(score>=95)
-        printf("학점은 %s 입니다.\n", table[0]);
-    else if (score<95 && score>=90)
-        printf("학점은 %s 입니다.\n", table[1]);
-    else if (score<90 && score>=85)
-        printf("학점은 %s 입니다.\n", table[2]);
-    else if(score<85 && score>=80)
-        printf("학점은 %s 입니다.\n", table[3]);
-    else if(score<80 && score>=75)
-        printf("학점은 %s 입니다.\n", table[4]);
-    else if(score<75 && score>=70)
-        printf("학점은 %s 입니다.\n", table[5]);
-    else if(score<70 && score>=65)
-        printf("학점은 %s 입니다.\n", table[6]);
-    else if(score<65 && score>=60)
-        printf("학점은 %s 입니다.\n", table[7]);
-    else if(score<60)
-        printf("학점은 %s 입니다.\n", table[8]);
+    //성적 계산하기
+    while(1){
+        printf("성적을 입력하세요 (0~100) : ");
+        scanf("%f", &stu_score);
+        if(stu_score!=EOF)
+            calculateScore(stu_score, GRADES, NUMBER);
+        else{
+            printf("학점 프로그램을 종료합니다.\n")
+            break;
+				}
+    }
+
+}
+
+void calculateScore(float stu_score, const char* GRADES[], const int length)
+{
+    if(stu_score>=95 && stu_score<=100)
+        printf("학점은 %s 입니다.\n", GRADES[0]);
+    else if (stu_score<95 && stu_score>=90)
+        printf("학점은 %s 입니다.\n", GRADES[1]);
+    else if (stu_score<90 && stu_score>=85)
+        printf("학점은 %s 입니다.\n", GRADES[2]);
+    else if(stu_score<85 && stu_score>=80)
+        printf("학점은 %s 입니다.\n", GRADES[3]);
+    else if(stu_score<80 && stu_score>=75)
+        printf("학점은 %s 입니다.\n", GRADES[4]);
+    else if(stu_score<75 && stu_score>=70)
+        printf("학점은 %s 입니다.\n", GRADES[5]);
+    else if(stu_score<70 && stu_score>=65)
+        printf("학점은 %s 입니다.\n", GRADES[6]);
+    else if(stu_score<65 && stu_score>=60)
+        printf("학점은 %s 입니다.\n", GRADES[7]);
+    else if(stu_score<60 && stu_score>=0)
+        printf("학점은 %s 입니다.\n", GRADES[8]);
     else
         printf("**성적을 올바르게 입력하세요. 범위는 0~100 입니다.\n");
 }
