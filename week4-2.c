@@ -5,9 +5,9 @@ int main(void){
     int num = sizeof(arr)/sizeof(arr[0]);
 
     if(num%2)
-        calcEven();
-    else
         calcOdd();
+    else
+        calcEven();
 
     return 0;
 }
