@@ -1,29 +1,37 @@
 #include <stdio.h>
 
 void bubbleSort(int arr[]);
-void compare(int arr[], int arr2[]);
+void calcOdd(int arr[], int num);
+void calcEven(int arr[], int num);
 
 int main(void){
+    //int arr[5] = {1,2,3,4,5};
+    int arr[4] = {2,4,4,4};
+    int num = sizeof(arr)/sizeof(arr[0]);
 
-    int i;
-    int arr[5] = {1,2,3,4,5};
-    int arr2[5] = {5,4,3,2,1};
-    //int arr[5] = {1,4,2,5,8};
-    //int arr2[5] = {2,5,4,3,1};
+    //check number
+    //printf("%d\n", num);
 
-    //정렬하기
+    // 오름차순으로 정렬
     bubbleSort(arr);
-    bubbleSort(arr2);
 
-    
-    //배열 확인
-    for(i=0;i<5;i++){
-        printf("%d\n", arr2[i]);
-    }
+    // 최단거리 구하기
+    if(num%2)
+        calcOdd(arr,num);
+    else
+        calcEven(arr,num);
 
-    //배열 비교하기
-    compare(arr, arr2);
+    return 0;
+}
 
+void calcOdd(int arr[], int num){
+    int mid = num/2;
+    printf("%d\n", arr[mid]);
+}
+
+void calcEven(int arr[], int num){
+    int mid = (num-1)/2;
+    printf("%d\n", arr[mid]);
 }
 
  void bubbleSort(int arr[]){
@@ -37,20 +45,5 @@ int main(void){
                 }
             }
         }
-}
-
- 
-
-void compare(int arr[], int arr2[]){
-    int i;
-    for(i=0; i<5; i++){
-        if(arr[i]!=arr2[i]){
-            printf("False");
-            break; 
-        }else if(i==4){
-            printf("True");
-            break;
-        }
-    }
 }
 
