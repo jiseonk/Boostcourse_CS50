@@ -10,7 +10,6 @@ typedef struct stack{
     int* array;
 } Stack;
 
-
 Stack* createStack(int capacity);
 int isFull(Stack* stack);
 int isEmpty(Stack* stack);
@@ -77,5 +76,10 @@ int pop(Stack* stack) {
 
 // peek() : 스택이 비어있지 않으면 맨 위에 있는 요소를 반환(삭제x)
 int peek(Stack* stack) {
-    return stack->array[stack->top];
+    //return -9999추가
+      if (isEmpty(stack))
+        return -9999;
+     else
+        return stack->array[stack->top];
+        
 }
